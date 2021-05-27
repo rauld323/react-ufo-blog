@@ -53,8 +53,9 @@
 
 /* blog details page */
 .blog-details img{
-  margin-left: 17%;
+  margin-left: 15%;
   margin-bottom: 10px;
+  width: 70%
 }
 .blog-details h2 {
   font-size: 20px;
@@ -65,5 +66,4 @@
 .blog-details div {
   margin: 20px 0;
 }
-
 
