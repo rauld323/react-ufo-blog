@@ -1,72 +1,104 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Create = () => {
-		const [title, setTitle] = useState('')
-		const [body, setBody] =useState('')
-		const [picture, setPicture] = useState('')
-		const [author, setAuthor] = useState('Maussan')
+	const [title, setTitle] = useState('');
+	const [body, setBody] = useState('');
+	const [picture, setPicture] = useState('');
+	const [author, setAuthor] = useState('Maussan');
 
-		const [isPending, setIsPending] = useState(false)
+	const [isPending, setIsPending] = useState(false);
 
-		const handleSubmit = (e) => {
-			//Prevents page from loading
-			e.preventDefault();
-			const blog = { title, body, picture, author };
+	const history = useHistory();
 
-			setIsPending(true);
+	const handleSubmit = e => {
+		//Prevents page from loading
+		e.preventDefault();
+		const blog = { title, body, picture, author };
 
-			// This fetches the DB and declares what kind of request I want to make
-			// and then the stringify method creates a json object. ID property will be automatically created
-			fetch('http://localhost:8000/blogs', {
-				method: 'POST',
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(blog)
-			}).then(() => {
-				console.log("new blog added")
-				setIsPending(false)
-			})
-		}
+		setIsPending(true);
+
+		// This fetches the DB and declares what kind of request I want to make
+		// and then the stringify method creates a json object. ID property will be automatically created
+		fetch('http://localhost:8000/blogs', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(blog)
+		}).then(() => {
+			console.log('new blog added');
+			setIsPending(false);
+			history.push('/');
+		});
+	};
 
 	return (
-		<div className="create">
+		<div className='create'>
 			<h2>Create Content</h2>
 			<form onSubmit={handleSubmit}>
-
-					<label>Blog Title:</label>
-					<input
-					type="text"
+				<label>Blog Title:</label>
+				<input
+					type='text'
 					required
-					value ={title}
-					onChange={(e) => setTitle(e.target.value)}
-					/>
+					value={title}
+					onChange={e =>
+						setTitle(
+							e.target
+								.value
+						)
+					}
+				/>
 
 				<label>Blog Body:</label>
 				<textarea
 					required
-					value = {body}
-					onChange={(e) => setBody(e.target.value)}
+					value={body}
+					onChange={e =>
+						setBody(
+							e.target
+								.value
+						)
+					}
 				/>
 				<label>Blog Picture URL :</label>
 				<input
-					type="text"
+					type='text'
 					required
 					value={picture}
-					onChange={(e) => setPicture(e.target.value)}
+					onChange={e =>
+						setPicture(
+							e.target
+								.value
+						)
+					}
 				/>
 
 				<label>Blog author:</label>
 				<select
 					value={author}
-					onChange={(e) => setAuthor(e.target.value)}
-				>
-					<option value="Maussan">Mausan</option>
-					<option value="Norry">Norry</option>
+					onChange={e =>
+						setAuthor(
+							e.target
+								.value
+						)
+					}>
+					<option value='Anthony'>
+						Tony
+					</option>
+					<option value='Smude'>
+						Smuddge
+					</option>
 				</select>
-				{ !isPending && <button>Add Blog</button> }
-				{ isPending && <button disabled>Adding to blog...</button> }
+				{!isPending && (
+					<button>Add Blog</button>
+				)}
+				{isPending && (
+					<button disabled>
+						Adding to blog...
+					</button>
+				)}
 			</form>
 		</div>
-	 );
-}
+	);
+};
 
 export default Create;
