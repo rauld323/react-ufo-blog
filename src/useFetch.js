@@ -7,16 +7,17 @@ const useFetch = url => {
 
 	useEffect(() => {
 		const abortCont = new AbortController();
-
 		setTimeout(() => {
-			fetch(url, { signal: abortCont.signal })
+			fetch(url)
 				.then(res => {
 					if (!res.ok) {
 						throw Error(
 							'Data was not fetched '
 						);
 					}
-					return res.json();
+					return console.log(
+						res.json()
+					);
 				})
 				.then(data => {
 					setData(data);
@@ -40,7 +41,6 @@ const useFetch = url => {
 					}
 				});
 		}, 1000);
-
 		return () => abortCont.abort();
 	}, [url]);
 

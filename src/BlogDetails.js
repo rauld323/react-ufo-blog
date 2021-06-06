@@ -10,7 +10,7 @@ const BlogDetails = () => {
 	const history = useHistory();
 
 	const handleClick = () => {
-		fetch('http://localhost:8000/blogs' + blog.id, {
+		fetch('http://localhost:8000/blogs' + blog._id, {
 			method: 'DELETE'
 		}).then(() => {
 			history.push('/');
@@ -24,15 +24,15 @@ const BlogDetails = () => {
 			{blog && (
 				<article>
 					<img
-						src={blog.picture}
+						src={blog.blogImage}
 						alt='aliens'
 					/>
-					<h2>{blog.title}</h2>
+					<h2>{blog.name}</h2>
 					<p>
 						Written by{' '}
 						{blog.author}
 					</p>
-					<div>{blog.body}</div>
+					<div>{blog.content}</div>
 					<button onClick={handleClick}>
 						Delete Blog
 					</button>
