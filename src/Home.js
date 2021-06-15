@@ -3,7 +3,7 @@ import useFetch from './useFetch';
 
 const Home = () => {
 	const { data: blogs, isPending, error } = useFetch(
-		'http://localhost:8000/blogs'
+		'http://localhost:8000/blogs/'
 	);
 
 	return (
@@ -16,7 +16,7 @@ const Home = () => {
 					title='All Blogs!'
 				/>
 			)}
-			{blogs && (
+			{/* {blogs && (
 				<BlogList
 					blogs={blogs.filter(
 						blog =>
@@ -26,7 +26,7 @@ const Home = () => {
 					title="Mausan's Blogs!"
 					slogan='*Top Contributor*'
 				/>
-			)}
+			)} */}
 		</div>
 	);
 };

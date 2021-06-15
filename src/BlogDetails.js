@@ -24,15 +24,18 @@ const BlogDetails = () => {
 			{blog && (
 				<article>
 					<img
-						src={blog.blogImage}
+						src={
+							blog.blog
+								.blogImage
+						}
 						alt='aliens'
 					/>
-					<h2>{blog.name}</h2>
+					<h2>{blog.blog.name}</h2>
 					<p>
 						Written by{' '}
-						{blog.author}
+						{blog.blog.author}
 					</p>
-					<div>{blog.content}</div>
+					<div>{blog.blog.content}</div>
 					<button onClick={handleClick}>
 						Delete Blog
 					</button>

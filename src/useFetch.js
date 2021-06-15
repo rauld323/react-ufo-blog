@@ -15,9 +15,7 @@ const useFetch = url => {
 							'Data was not fetched '
 						);
 					}
-					return console.log(
-						res.json()
-					);
+					return res.json();
 				})
 				.then(data => {
 					setData(data);
