@@ -5,6 +5,7 @@ import Create from './Create';
 import BlogDetails from './BlogDetails';
 import NoPage from './NoPage';
 import About from './About';
+import Contact from './Contact';
 
 function App() {
 	return (
@@ -20,6 +21,9 @@ function App() {
 						</Route>
 						<Route path='/create'>
 							<Create />
+						</Route>
+						<Route path='/contact'>
+							<Contact />
 						</Route>
 						<Route path='/blogs/:id'>
 							<BlogDetails />
