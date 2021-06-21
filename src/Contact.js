@@ -72,9 +72,11 @@ const Contact = () => {
 					}
 				/>
 
-				<label>Blog author:</label>
+				<label>Email</label>
 				<input
+					type='email'
 					value={email}
+					required
 					onChange={e =>
 						setEmail(
 							e.target

@@ -6,6 +6,7 @@ import BlogDetails from './BlogDetails';
 import NoPage from './NoPage';
 import About from './About';
 import Contact from './Contact';
+// import Login from './Login';
 
 function App() {
 	return (
@@ -22,6 +23,9 @@ function App() {
 						<Route path='/create'>
 							<Create />
 						</Route>
+						{/* <Route path='/login'>
+							<Login />
+						</Route> */}
 						<Route path='/contact'>
 							<Contact />
 						</Route>

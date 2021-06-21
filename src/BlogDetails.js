@@ -25,6 +25,7 @@ const BlogDetails = () => {
 				<article>
 					<img
 						src={
+							'http://localhost:8000/' +
 							blog.blog
 								.blogImage
 						}
