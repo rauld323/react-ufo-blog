@@ -1,8 +1,0 @@
-{
-	"prettier.singleQuote": true,
-	"prettier.tabWidth": 10,
-	"editor.autoClosingQuotes": "always",
-	"editor.autoClosingBrackets": "always",
-	"prettier.jsxBracketSameLine": true,
-	"prettier.jsxSingleQuote": true
-}
