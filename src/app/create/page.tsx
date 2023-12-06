@@ -1,6 +1,6 @@
 "use client";
-
 import { useState } from "react";
+import styled from "styled-components";
 
 const Create = () => {
   const [title, setTitle] = useState("");
@@ -30,15 +30,16 @@ const Create = () => {
   };
 
   return (
-    <div className="create">
-      <h2>Create Content</h2>
-      <form onSubmit={handleSubmit}>
+    <StyledContainer>
+      <h1>Create Content</h1>
+      <StyledForm onSubmit={handleSubmit}>
         <label>Blog Title:</label>
         <input
           type="text"
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          style={{ marginBottom: "20px" }}
         />
 
         <label>Blog Body:</label>
@@ -46,6 +47,7 @@ const Create = () => {
           required
           value={body}
           onChange={(e) => setBody(e.target.value)}
+          style={{ marginBottom: "20px" }}
         />
         <label>Blog Picture URL :</label>
         <input
@@ -53,18 +55,38 @@ const Create = () => {
           required
           value={picture}
           onChange={(e) => setPicture(e.target.value)}
+          style={{ marginBottom: "20px" }}
         />
 
         <label>Blog author:</label>
-        <select value={author} onChange={(e) => setAuthor(e.target.value)}>
+        <select
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          style={{ marginBottom: "20px" }}
+        >
           <option value="Anthony">Tony</option>
           <option value="Smude">Smuddge</option>
         </select>
         {!isPending && <button>Add Blog</button>}
         {isPending && <button disabled>Adding to blog...</button>}
-      </form>
-    </div>
+      </StyledForm>
+    </StyledContainer>
   );
 };
 
 export default Create;
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  min-width: 70%;
+  border: solid black 1px;
+  border-radius: 10px;
+  padding: 20px;
+`;

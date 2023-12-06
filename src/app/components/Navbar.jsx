@@ -25,5 +25,6 @@ const StyledNavBar = styled.nav`
   display: flex;
   align-items: center;
   width: 100%;
+  height: 100px;
   justify-content: space-between;
 `;
