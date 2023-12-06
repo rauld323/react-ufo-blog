@@ -1,9 +1,12 @@
+"use client";
+import styled from "styled-components";
+
 export default function About() {
   return (
     <div className="about-us">
       <p>About Me</p>
       <h1>BurningSky A.i</h1>
-      <img
+      <ResponsiveImage
         src="https://nu.aeon.co/images/7d7b2f98-4775-4462-a5d7-078c55e558fb/idea_sied-sid-mosdell-5253662054_de602ff2ca_o.jpg"
         alt="reptile"
       />
@@ -28,3 +31,8 @@ export default function About() {
     </div>
   );
 }
+
+const ResponsiveImage = styled.img`
+  max-width: 60%;
+  height: auto;
+`;

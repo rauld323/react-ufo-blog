@@ -1,5 +1,4 @@
-import Navbar from "../components/Navbar";
-import BlogList from "../components/Bloglist";
+import BlogList from "./components/Bloglist";
 
 const blog = {
   name: "krjekrj",
@@ -10,7 +9,6 @@ const blog = {
 const Home = () => {
   return (
     <div className="home">
-      <Navbar />
       <BlogList blog={blog} title={"jkjdkjfd"} slogan={"All Blogs!"} />
     </div>
   );

@@ -1,8 +1,10 @@
+"use client";
 import Link from "next/link";
+import styled from "styled-components";
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
+    <StyledNavBar>
       <Link href="/">
         <h1>The UFO Blog</h1>
       </Link>
@@ -13,8 +15,15 @@ const Navbar = () => {
         <Link href="/about">About</Link>
         <Link href="/contact">Contact</Link>
       </div>
-    </nav>
+    </StyledNavBar>
   );
 };
 
 export default Navbar;
+
+const StyledNavBar = styled.nav`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+`;
