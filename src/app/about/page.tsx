@@ -3,14 +3,13 @@ import styled from "styled-components";
 
 export default function About() {
   return (
-    <div className="about-us">
-      <p>About Me</p>
+    <AboutMeContainer>
       <h1>BurningSky A.i</h1>
       <ResponsiveImage
         src="https://nu.aeon.co/images/7d7b2f98-4775-4462-a5d7-078c55e558fb/idea_sied-sid-mosdell-5253662054_de602ff2ca_o.jpg"
         alt="reptile"
       />
-      <p>
+      <ResponsiveText>
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
         has roots in a piece of classical Latin literature from 45 BC, making it
         over 2000 years old. Richard McClintock, a Latin professor at
@@ -27,12 +26,22 @@ export default function About() {
         "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their
         exact original form, accompanied by English versions from the 1914
         translation by H. Rackham.
-      </p>
-    </div>
+      </ResponsiveText>
+    </AboutMeContainer>
   );
 }
+const AboutMeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const ResponsiveImage = styled.img`
   max-width: 60%;
+  height: auto;
+`;
+
+const ResponsiveText = styled.p`
+  max-width: 80%;
   height: auto;
 `;
