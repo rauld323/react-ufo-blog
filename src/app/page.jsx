@@ -1,5 +1,12 @@
-// import useFetch from "../components/useFetch";
+import Navbar from "../components/Navbar";
 import BlogList from "../components/Bloglist";
+
+const blog = {
+  name: "krjekrj",
+  id: "1",
+  authod: "4343433",
+};
+
 const Home = () => {
   // const {
   //   data: blogs,
@@ -9,7 +16,8 @@ const Home = () => {
 
   return (
     <div className="home">
-      HELLo
+      <Navbar />
+      <BlogList blog={blog} title={"jkjdkjfd"} slogan={"All Blogs!"} />
       {/* {error && <div>{error}</div>}
       {isPending && <div>The Truth is out...</div>}
       {blogs && <BlogList blogs={blogs} title="All Blogs!" />} */}
