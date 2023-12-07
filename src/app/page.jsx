@@ -4,7 +4,6 @@ import useBlogs from "./hooks/blog-hook";
 
 const Home = () => {
   const { data } = useBlogs();
-  console.log(data, "gtrt");
 
   return (
     <div className="home">
