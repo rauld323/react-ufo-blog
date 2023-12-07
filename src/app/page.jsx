@@ -1,15 +1,23 @@
+"use client";
 import BlogList from "./components/Bloglist";
-
-const blog = {
-  name: "krjekrj",
-  id: "1",
-  authod: "4343433",
-};
+import useBlogs from "./hooks/blog-hook";
 
 const Home = () => {
+  const { data } = useBlogs();
+  console.log(data, "gtrt");
+
   return (
     <div className="home">
-      <BlogList blog={blog} title={"jkjdkjfd"} slogan={"All Blogs!"} />
+      {data?.map((blog, key) => (
+        <BlogList
+          key={key}
+          author={blog.author}
+          body={blog.body}
+          blogId={blog.id}
+          title={blog.title}
+          slogan={"All Blogs!"}
+        />
+      ))}
     </div>
   );
 };
