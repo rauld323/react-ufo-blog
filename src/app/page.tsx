@@ -14,7 +14,7 @@ const Home = () => {
           body={blog.body}
           blogId={blog.id}
           title={blog.title}
-          slogan={"All Blogs!"}
+          name={blog.name}
         />
       ))}
     </div>
