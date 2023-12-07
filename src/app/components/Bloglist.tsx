@@ -9,7 +9,7 @@ interface BlogProps {
   title: string;
 }
 
-const BlogList: FC<BlogProps> = ({ name, body, author, blogId, title }) => {
+const BlogList: FC<BlogProps> = ({ name, author, blogId, title }) => {
   return (
     <div className="blog-list">
       <h2>{title}</h2>
