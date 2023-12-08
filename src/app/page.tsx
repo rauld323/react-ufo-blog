@@ -1,5 +1,5 @@
 "use client";
-import BlogList from "./components/Bloglist";
+import BlogList from "./components/BlogList";
 import useBlogs from "./hooks/blog-hook";
 
 const Home = () => {

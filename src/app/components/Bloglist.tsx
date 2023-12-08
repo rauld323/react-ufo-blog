@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
+import styled from "styled-components";
 
 interface BlogProps {
   name: string;
@@ -11,7 +12,7 @@ interface BlogProps {
 
 const BlogList: FC<BlogProps> = ({ name, author, blogId, title }) => {
   return (
-    <div className="blog-list">
+    <StyledBlogList>
       <h2>{title}</h2>
       <div className="blog-preview" key={blogId}>
         <Link href={`/blogs/${blogId}`}>
@@ -19,8 +20,25 @@ const BlogList: FC<BlogProps> = ({ name, author, blogId, title }) => {
           <p>Written by {author}</p>
         </Link>
       </div>
-    </div>
+    </StyledBlogList>
   );
 };
 
 export default BlogList;
+
+const StyledBlogList = styled.div`
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+  &:hover {
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    font-size: 20px;
+    color: #316e83;
+    margin-bottom: 8px;
+  }
+  a {
+    text-decoration: none;
+  }
+`;

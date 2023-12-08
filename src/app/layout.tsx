@@ -1,5 +1,5 @@
 import "./globals.css";
-import Provider from "./util/Provider";
+import Provider from "./utils/Provider";
 import Navbar from "./components/Navbar";
 import React from "react";
 import { Metadata } from "next";
