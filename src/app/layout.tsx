@@ -1,7 +1,10 @@
+import React from "react";
 import "./globals.css";
 import Provider from "./utils/Provider";
 import Navbar from "./components/Navbar";
-import React from "react";
+
+import StyledComponentsRegistry from "./lib/registry";
+
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <Provider>{children}</Provider>
+        <StyledComponentsRegistry>
+          <Navbar />
+          <Provider>{children}</Provider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
