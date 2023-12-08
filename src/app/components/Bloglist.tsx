@@ -6,15 +6,16 @@ interface BlogProps {
   name: string;
   body: string;
   author: string;
-  blogId: string;
+  blogId: number;
   title: string;
 }
 
 const BlogList: FC<BlogProps> = ({ name, author, blogId, title }) => {
+  console.log(blogId);
   return (
     <StyledBlogList>
       <h2>{title}</h2>
-      <div className="blog-preview" key={blogId}>
+      <div className="blog-preview">
         <Link href={`/blogs/${blogId}`}>
           <h2>{name}</h2>
           <p>Written by {author}</p>

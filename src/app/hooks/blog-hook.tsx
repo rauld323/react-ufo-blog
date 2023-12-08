@@ -1,8 +1,10 @@
 import { useQuery } from "react-query";
-import { fetchBlogs } from "../services/blog-service";
+import { fetchBlogDetails, fetchBlogs } from "../services/blog-service";
 
-const useBlogs = () => {
+export const useBlogs = () => {
   return useQuery("blogs", fetchBlogs);
 };
 
-export default useBlogs;
+export const getBlogDetails = () => {
+  return useQuery("blog-details", fetchBlogDetails);
+};

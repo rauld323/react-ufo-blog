@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useParams } from "next/navigation";
 
 interface Blog {
   id: string;
@@ -17,6 +18,17 @@ const axiosInstance = axios.create({
 export const fetchBlogs = async (): Promise<Blog[]> => {
   try {
     const response = await axiosInstance.get("/blogs");
+    return response.data as Blog[];
+  } catch (error) {
+    throw new Error("Error fetching blogs: " + error.message);
+  }
+};
+
+export const fetchBlogDetails = async (): Promise<Blog[]> => {
+  const { blogId } = useParams();
+
+  try {
+    const response = await axiosInstance.get("/blogs/" + blogId);
     return response.data as Blog[];
   } catch (error) {
     throw new Error("Error fetching blogs: " + error.message);

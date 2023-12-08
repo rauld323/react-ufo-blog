@@ -1,6 +1,6 @@
 "use client";
 import BlogList from "./components/BlogList";
-import useBlogs from "./hooks/blog-hook";
+import { useBlogs } from "./hooks/blog-hook";
 
 const Home = () => {
   const { data } = useBlogs();
@@ -12,7 +12,7 @@ const Home = () => {
           key={key}
           author={blog.author}
           body={blog.body}
-          blogId={blog.id}
+          blogId={key}
           title={blog.title}
           name={blog.name}
         />
