@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useParams } from "next/navigation";
 
-interface Blog {
+export interface Blog {
   id: string;
   title: string;
   body: string;
@@ -24,13 +23,11 @@ export const fetchBlogs = async (): Promise<Blog[]> => {
   }
 };
 
-export const fetchBlogDetails = async (): Promise<Blog[]> => {
-  const { blogId } = useParams();
-
+export const fetchBlogDetails = async (blogId: string): Promise<Blog> => {
   try {
-    const response = await axiosInstance.get("/blogs/" + blogId);
-    return response.data as Blog[];
+    const response = await axiosInstance.get(`/blogs/${blogId}`);
+    return response.data as Blog;
   } catch (error) {
-    throw new Error("Error fetching blogs: " + error.message);
+    throw new Error("Error fetching blog details: " + error.message);
   }
 };

@@ -12,7 +12,7 @@ const Home = () => {
           key={key}
           author={blog.author}
           body={blog.body}
-          blogId={key}
+          blogId={blog.id}
           title={blog.title}
           name={blog.name}
         />

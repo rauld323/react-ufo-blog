@@ -6,12 +6,11 @@ interface BlogProps {
   name: string;
   body: string;
   author: string;
-  blogId: number;
+  blogId: string;
   title: string;
 }
 
 const BlogList: FC<BlogProps> = ({ name, author, blogId, title }) => {
-  console.log(blogId);
   return (
     <StyledBlogList>
       <h2>{title}</h2>
