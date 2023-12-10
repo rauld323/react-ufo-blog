@@ -6,6 +6,7 @@ export interface Blog {
   body: string;
   author: string;
   name: string;
+  blogId: string;
 }
 
 const API_BASE_URL = "http://localhost:8000";

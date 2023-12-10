@@ -1,32 +1,29 @@
+"use client";
 import Link from "next/link";
-import { FC } from "react";
 import styled from "styled-components";
+import { useBlogs } from "../hooks/blog-hook";
 
-interface BlogProps {
-  name: string;
-  body: string;
-  author: string;
-  blogId: string;
-  title: string;
-}
-
-const BlogList: FC<BlogProps> = ({ name, author, blogId, title }) => {
+const Blogs = () => {
+  const { data } = useBlogs();
+  console.log(data);
   return (
-    <StyledBlogList>
-      <h2>{title}</h2>
-      <div className="blog-preview">
-        <Link href={`/blogs/${blogId}`}>
-          <a>
-            <h2>{name}</h2>
-            <p>Written by {author}</p>
-          </a>
-        </Link>
-      </div>
-    </StyledBlogList>
+    <div>
+      {data?.map((blog, key) => (
+        <StyledBlogList key={key}>
+          <h2>{blog.title}</h2>
+          <div className="blog-preview">
+            <Link href={`/blogs/${blog.id}`}>
+              <h2>{blog.name}</h2>
+              <p>Written by {blog.author}</p>
+            </Link>
+          </div>
+        </StyledBlogList>
+      ))}
+    </div>
   );
 };
 
-export default BlogList;
+export default Blogs;
 
 const StyledBlogList = styled.div`
   padding: 10px 16px;
