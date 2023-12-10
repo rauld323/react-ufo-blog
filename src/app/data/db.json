@@ -1,17 +1,17 @@
 {
   "blogs": [
     {
-      "title": "fsdfsdfdsfsdf",
-      "name": "fdfdf",
+      "title": "Blog Number",
+      "name": "This blog Number 1",
       "body": "ddasdddas",
-      "author": "what",
+      "author": "Siquieros",
       "id": "1"
     },
     {
-      "title": "fsdfsdfdsfsdf",
-      "body": "ddasdddas",
-      "author": "what",
-      "name": "fdfdf",
+      "title": "Numero de Blog",
+      "body": "ddasdddas afkjakfjkasjfkaj akj askjfkajfkajf kjakfjakfj",
+      "author": "Orozco",
+      "name": "This is blog number 2",
       "id": "2"
     }
   ]
