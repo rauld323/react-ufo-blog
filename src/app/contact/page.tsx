@@ -1,19 +1,13 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { Controller } from "react-hook-form";
-import {
-  contactFormValues,
-  IContactFormValue,
-} from "./formSchema/contactFormSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { testSchema, TestSchema } from "./formSchema/contactFormSchema";
 
 const Contact = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IContactFormValue>({
+  const { control, handleSubmit } = useForm<TestSchema>({
     mode: "onChange",
-    defaultValues: contactFormValues,
+    resolver: zodResolver(testSchema),
   });
 
   return (
