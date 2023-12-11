@@ -76,13 +76,13 @@ const Create = () => {
 
 export default Create;
 
-const StyledContainer = styled.div`
+export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const StyledForm = styled.form`
+export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   min-width: 70%;

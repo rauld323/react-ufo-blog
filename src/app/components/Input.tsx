@@ -4,31 +4,35 @@ import styled from "styled-components";
 interface IProps {
   field: any;
   placeHolder?: string;
-  inputName?: string;
+  label?: string;
   error?: boolean;
   errorMessage?: string;
 }
 
 const Input: FC<IProps> = ({
   placeHolder = "Raul",
-  inputName = "Name",
+  label = "Name",
   error = false,
   errorMessage = "Something went wrong!",
 }) => {
   return (
-    <div>
-      <StyledInputName error={error}>{inputName}</StyledInputName>
+    <StyledInputContainer>
+      <StyledLabel error={error}>{label}</StyledLabel>
       <input placeholder={placeHolder} />
       {error && (
         <StyledErrorMessage error={error}>{errorMessage}</StyledErrorMessage>
       )}
-    </div>
+    </StyledInputContainer>
   );
 };
 
 export default Input;
 
-const StyledInputName = styled.h5<{ error: boolean }>`
+const StyledInputContainer = styled.div`
+  margin-bottom: 20px;
+`;
+
+const StyledLabel = styled.label<{ error: boolean }>`
   color: ${(props) => (props.error ? "red" : "black")};
 `;
 

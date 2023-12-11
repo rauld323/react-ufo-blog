@@ -2,17 +2,22 @@
 import { useForm } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { testSchema, TestSchema } from "./formSchema/contactFormSchema";
+import { StyledContainer, StyledForm } from "../create/page";
+import {
+  ContactFormSchema,
+  contactFormSchema,
+} from "./formSchema/contactFormSchema";
 
 const Contact = () => {
-  const { control, handleSubmit } = useForm<TestSchema>({
+  const { control, handleSubmit } = useForm<ContactFormSchema>({
     mode: "onChange",
-    resolver: zodResolver(testSchema),
+    resolver: zodResolver(contactFormSchema),
   });
 
   return (
-    <div>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <StyledContainer>
+      <h1>Contact Us!</h1>
+      <StyledForm onSubmit={handleSubmit((data) => console.log(data))}>
         <Controller
           control={control}
           name="fullName"
@@ -38,8 +43,8 @@ const Contact = () => {
         />
 
         <input type="submit" />
-      </form>
-    </div>
+      </StyledForm>
+    </StyledContainer>
   );
 };
 

@@ -7,11 +7,11 @@ type ContactFormValue = {
   textArea: string;
 };
 
-export const testSchema = z.object({
+export const contactFormSchema = z.object({
   fullName: z.string(),
   subject: z.string(),
   email: z.string().email(),
   textArea: z.string(),
 });
 
-export type TestSchema = z.infer<typeof testSchema>;
+export type ContactFormSchema = z.infer<typeof contactFormSchema>;
