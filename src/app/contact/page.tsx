@@ -1,27 +1,20 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { Controller } from "react-hook-form";
+import {
+  contactFormValues,
+  IContactFormValue,
+} from "./formSchema/contactFormSchema";
 
 const Contact = () => {
-  interface IContactFormValue {
-    fullName: string;
-    subject: string;
-    email: string;
-    textArea: string;
-  }
-  const defaultValues = {
-    fullName: "",
-    subject: "",
-    email: "",
-    textArea: "",
-  };
-
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IContactFormValue>({ mode: "onChange", defaultValues });
+  } = useForm<IContactFormValue>({
+    mode: "onChange",
+    defaultValues: contactFormValues,
+  });
 
   return (
     <div>
