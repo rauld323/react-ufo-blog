@@ -1,69 +1,29 @@
 "use client";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const Contact = () => {
-  const [name, setName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [message, setMessage] = useState("");
-  const [email, setEmail] = useState("");
-
-  const [isPending, setIsPending] = useState(false);
-
-  const handleSubmit = (e) => {
-    //Prevents page from loading
-    e.preventDefault();
-    const contact = { name, lastName, message, email };
-
-    setIsPending(true);
-
-    // This fetches the DB and declares what kind of request I want to make
-    // and then the stringify method creates a json object. ID property will be automatically created
-    fetch("http://localhost:8000/form/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(contact),
-    }).then(() => {
-      console.log("Contact was sent");
-      setIsPending(false);
-    });
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   return (
-    <div className="createContact">
-      <h2>Send Us a Message</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+    <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <input {...register("fullName", { required: true })} />
+      {errors.fullName && <p>Name is required.</p>}
 
-        <label>Last Name:</label>
-        <input
-          required
-          value={lastName}
-          onChange={(e) => setlastName(e.target.value)}
-        />
-        <label>Message :</label>
-        <textarea
-          required
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
+      <input {...register("subject", { required: true })} />
+      {errors.subject && <p>Subject is required.</p>}
 
-        <label>Email</label>
-        <input
-          type="email"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-        {!isPending && <button>Contact!</button>}
-        {isPending && <button disabled>Adding to blog...</button>}
-      </form>
-    </div>
+      <input {...register("email", { pattern: /\d+/ })} />
+      {errors.email && <p>Please enter an email</p>}
+
+      <textarea {...register("text-area", { required: true })} />
+      {errors.textArea && <p>Please enter your message here</p>}
+
+      <input type="submit" />
+    </form>
   );
 };
 
