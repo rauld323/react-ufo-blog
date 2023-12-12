@@ -13,12 +13,11 @@ const Contact = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<ContactFormSchema>({
     mode: "onSubmit",
     resolver: zodResolver(contactFormSchema),
   });
-  console.log(isValid);
   return (
     <>
       <StyledContainer>

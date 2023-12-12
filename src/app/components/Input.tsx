@@ -57,7 +57,7 @@ const StyledInput = styled.input`
 `;
 
 const StyledLabel = styled.label<{ hasError: boolean }>`
-  color: ${(hasError) => (hasError ? "red" : "black")};
+  color: ${({ hasError }) => (hasError ? "red" : "black")};
   font-size: 13px;
 `;
 
