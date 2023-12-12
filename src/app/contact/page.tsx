@@ -8,21 +8,28 @@ import {
   contactFormSchema,
 } from "./formSchema/contactFormSchema";
 import Input from "../components/Input";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 const Contact = () => {
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<ContactFormSchema>({
     mode: "onSubmit",
     resolver: zodResolver(contactFormSchema),
   });
+
+  const onHCaptchaChange = (token: string) => {
+    setValue("email", token);
+  };
   return (
     <>
       <StyledContainer>
         <h1>Contact Us!</h1>
-        <StyledForm onSubmit={handleSubmit((data) => console.log(data))}>
+        <StyledForm onSubmit={() => "https://api.web3forms.com/submit"}>
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
           <Controller
             control={control}
             name="fullName"
@@ -79,7 +86,10 @@ const Contact = () => {
               />
             )}
           />
-
+          <HCaptcha
+            sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+            onVerify={onHCaptchaChange}
+          />
           <input type="submit" />
         </StyledForm>
       </StyledContainer>
