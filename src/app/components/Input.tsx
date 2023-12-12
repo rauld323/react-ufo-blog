@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { FieldErrors } from "react-hook-form";
 import styled, { keyframes } from "styled-components";
 
 interface IProps {
@@ -9,6 +8,7 @@ interface IProps {
   error?: string;
   type?: string;
   onChange: (...event: any[]) => void;
+  isTextArea?: boolean;
 }
 
 const Input: FC<IProps> = ({
@@ -17,12 +17,20 @@ const Input: FC<IProps> = ({
   error,
   type = "text",
   onChange,
+  isTextArea,
 }) => {
-  console.log(error);
   return (
     <StyledInputContainer>
       <StyledLabel hasError={!!error}>{label}</StyledLabel>
-      <StyledInput placeholder={placeHolder} type={type} onChange={onChange} />
+      {isTextArea ? (
+        <textarea placeholder={placeHolder} onChange={onChange} />
+      ) : (
+        <StyledInput
+          placeholder={placeHolder}
+          type={type}
+          onChange={onChange}
+        />
+      )}
       {error && (
         <StyledErrorMessage hasError={!!error}>{error}</StyledErrorMessage>
       )}

@@ -23,6 +23,7 @@ export const contactFormSchema = z.object({
     .max(50, "Email should not exceed 50 characters"),
   textArea: z
     .string()
+    .min(10, "Message should be at leaset 10 characters")
     .max(300, "Message should not exceed 300 characters")
     .regex(/^[a-zA-Z0-9\s.,!?'"()]+$/, {
       message: "Invalid characters detected in the message",

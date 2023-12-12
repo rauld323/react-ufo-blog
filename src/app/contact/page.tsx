@@ -30,7 +30,7 @@ const Contact = () => {
               <Input
                 {...field}
                 label={"Name"}
-                placeHolder={"Raul Davila"}
+                placeHolder={"ex. Timmy Turner"}
                 error={errors.fullName?.message}
                 onChange={field.onChange}
               />
@@ -69,10 +69,13 @@ const Contact = () => {
             control={control}
             name="textArea"
             render={({ field }) => (
-              <textarea
+              <Input
                 {...field}
+                isTextArea
+                label={"Message"}
+                placeHolder={"What would you like to share?"}
+                error={errors.textArea?.message}
                 onChange={field.onChange}
-                // onError={errors.textArea?.message}
               />
             )}
           />
