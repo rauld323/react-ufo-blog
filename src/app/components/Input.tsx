@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 interface IProps {
   field?: any;
@@ -29,6 +29,7 @@ const Input: FC<IProps> = ({
           placeholder={placeHolder}
           type={type}
           onChange={onChange}
+          hasError={!!error}
         />
       )}
       {error && (
@@ -52,16 +53,21 @@ const inputAnimationShake = keyframes`
   }
 `;
 
+const shakeAnimation = css`
+  ${inputAnimationShake} 0.4s;
+`;
+
 const StyledInputContainer = styled.div`
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
 `;
 
-const StyledInput = styled.input`
-  &:invalid {
-    animation: ${inputAnimationShake} 0.4s;
-  }
+const StyledInput = styled.input<{ hasError: boolean }>`
+  border: 1px solid ${({ hasError }) => (hasError ? "red" : "black")};
+  animation: ${({ hasError }) => (hasError ? shakeAnimation : "none")};
+  border-radius: 5px;
+  outline-style: none;
 `;
 
 const StyledLabel = styled.label<{ hasError: boolean }>`
@@ -70,6 +76,6 @@ const StyledLabel = styled.label<{ hasError: boolean }>`
 `;
 
 const StyledErrorMessage = styled.div<{ hasError: boolean }>`
-  color: ${(hasError) => (hasError ? "red" : "black")};
+  color: ${({ hasError }) => (hasError ? "red" : "black")};
   font-size: 14px;
 `;

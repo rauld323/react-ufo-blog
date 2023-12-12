@@ -39,13 +39,13 @@ const Contact = () => {
 
           <Controller
             control={control}
-            name="email"
+            name="subject"
             render={({ field }) => (
               <Input
                 {...field}
-                label={"Email"}
-                placeHolder={"your@email.com"}
-                error={errors.email?.message}
+                label={"Subject"}
+                placeHolder={"Let me buy you a coffee!"}
+                error={errors.subject?.message}
                 onChange={field.onChange}
               />
             )}
@@ -53,13 +53,13 @@ const Contact = () => {
 
           <Controller
             control={control}
-            name="subject"
+            name="email"
             render={({ field }) => (
               <Input
                 {...field}
-                label={"Subject"}
-                placeHolder={"Math"}
-                error={errors.subject?.message}
+                label={"Email"}
+                placeHolder={"your@email.com"}
+                error={errors.email?.message}
                 onChange={field.onChange}
               />
             )}
