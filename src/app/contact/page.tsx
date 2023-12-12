@@ -9,8 +9,11 @@ import {
 } from "./formSchema/contactFormSchema";
 import Input from "../components/Input";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import styled from "styled-components";
 
 const Contact = () => {
+  const apiKey = process.env.API_KEY;
+
   const {
     control,
     handleSubmit,
@@ -24,12 +27,13 @@ const Contact = () => {
   const onHCaptchaChange = (token: string) => {
     setValue("email", token);
   };
+
   return (
     <>
       <StyledContainer>
         <h1>Contact Us!</h1>
-        <StyledForm onSubmit={() => "https://api.web3forms.com/submit"}>
-          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+        <StyledForm onSubmit={handleSubmit(() => null)}>
+          <input type="hidden" name="access_key" value={apiKey} />
           <Controller
             control={control}
             name="fullName"
@@ -86,11 +90,15 @@ const Contact = () => {
               />
             )}
           />
-          <HCaptcha
-            sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-            onVerify={onHCaptchaChange}
-          />
-          <input type="submit" />
+
+          <StyledCaptchaContainer>
+            <HCaptcha
+              sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+              onVerify={onHCaptchaChange}
+            />
+          </StyledCaptchaContainer>
+
+          <button type="submit">Submit</button>
         </StyledForm>
       </StyledContainer>
     </>
@@ -98,3 +106,9 @@ const Contact = () => {
 };
 
 export default Contact;
+
+const StyledCaptchaContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+`;

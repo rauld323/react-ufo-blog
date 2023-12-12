@@ -20,7 +20,7 @@ export const fetchBlogs = async (): Promise<Blog[]> => {
     const response = await axiosInstance.get("/blogs");
     return response.data as Blog[];
   } catch (error) {
-    throw new Error("Error fetching blogs: " + error.message);
+    throw new Error("Error fetching blogs: " + error);
   }
 };
 
@@ -29,6 +29,6 @@ export const fetchBlogDetails = async (blogId: string): Promise<Blog> => {
     const response = await axiosInstance.get(`/blogs/${blogId}`);
     return response.data as Blog;
   } catch (error) {
-    throw new Error("Error fetching blog details: " + error.message);
+    throw new Error("Error fetching blog details: " + error);
   }
 };
