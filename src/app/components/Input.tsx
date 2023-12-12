@@ -1,28 +1,30 @@
 import React, { FC } from "react";
+import { FieldErrors } from "react-hook-form";
 import styled, { keyframes } from "styled-components";
 
 interface IProps {
   field?: any;
   placeHolder?: string;
-  label?: string;
-  error: boolean;
-  errorMessage?: string;
+  label: string;
+  error?: string;
   type?: string;
+  onChange: (...event: any[]) => void;
 }
 
 const Input: FC<IProps> = ({
   placeHolder = "Raul",
   label = "Name",
   error,
-  errorMessage = "Something went wrong!",
   type = "text",
+  onChange,
 }) => {
+  console.log(error);
   return (
     <StyledInputContainer>
-      <StyledLabel error={error}>{label}</StyledLabel>
-      <StyledInput placeholder={placeHolder} type={type} />
+      <StyledLabel hasError={!!error}>{label}</StyledLabel>
+      <StyledInput placeholder={placeHolder} type={type} onChange={onChange} />
       {error && (
-        <StyledErrorMessage error={error}>{errorMessage}</StyledErrorMessage>
+        <StyledErrorMessage hasError={!!error}>{error}</StyledErrorMessage>
       )}
     </StyledInputContainer>
   );
@@ -54,12 +56,12 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledLabel = styled.label<{ error: boolean }>`
-  color: ${(props) => (props.error ? "red" : "black")};
+const StyledLabel = styled.label<{ hasError: boolean }>`
+  color: ${(hasError) => (hasError ? "red" : "black")};
   font-size: 13px;
 `;
 
-const StyledErrorMessage = styled.div<{ error: boolean }>`
-  color: ${(props) => (props.error ? "red" : "black")};
+const StyledErrorMessage = styled.div<{ hasError: boolean }>`
+  color: ${(hasError) => (hasError ? "red" : "black")};
   font-size: 14px;
 `;

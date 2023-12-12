@@ -10,11 +10,15 @@ import {
 import Input from "../components/Input";
 
 const Contact = () => {
-  const { control, handleSubmit, formState } = useForm<ContactFormSchema>({
-    mode: "onChange",
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<ContactFormSchema>({
+    mode: "onSubmit",
     resolver: zodResolver(contactFormSchema),
   });
-
+  console.log(isValid);
   return (
     <>
       <StyledContainer>
@@ -25,10 +29,11 @@ const Contact = () => {
             name="fullName"
             render={({ field }) => (
               <Input
+                {...field}
                 label={"Name"}
                 placeHolder={"Raul Davila"}
-                {...field}
-                error={false}
+                error={errors.fullName?.message}
+                onChange={field.onChange}
               />
             )}
           />
@@ -38,10 +43,11 @@ const Contact = () => {
             name="email"
             render={({ field }) => (
               <Input
+                {...field}
                 label={"Email"}
                 placeHolder={"your@email.com"}
-                {...field}
-                error={false}
+                error={errors.email?.message}
+                onChange={field.onChange}
               />
             )}
           />
@@ -51,10 +57,11 @@ const Contact = () => {
             name="subject"
             render={({ field }) => (
               <Input
+                {...field}
                 label={"Subject"}
                 placeHolder={"Math"}
-                {...field}
-                error={false}
+                error={errors.subject?.message}
+                onChange={field.onChange}
               />
             )}
           />
@@ -62,7 +69,13 @@ const Contact = () => {
           <Controller
             control={control}
             name="textArea"
-            render={({ field }) => <textarea {...field} />}
+            render={({ field }) => (
+              <textarea
+                {...field}
+                onChange={field.onChange}
+                // onError={errors.textArea?.message}
+              />
+            )}
           />
 
           <input type="submit" />
