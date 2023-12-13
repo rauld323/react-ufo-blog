@@ -6,14 +6,15 @@ import { StyledContainer, StyledForm } from "../create/page";
 import {
   ContactFormSchema,
   contactFormSchema,
+  ContactFormValue,
 } from "./formSchema/contactFormSchema";
 import Input from "../components/Input";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import styled from "styled-components";
+import { useContactForm } from "../hooks/blog-hook";
+import { formApiKey } from "../services/blog-service";
 
 const Contact = () => {
-  const apiKey = process.env.API_KEY;
-
   const {
     control,
     handleSubmit,
@@ -28,12 +29,22 @@ const Contact = () => {
     setValue("email", token);
   };
 
+  const contactFormMutation = useContactForm();
+
+  const onSubmit = async (data: ContactFormValue) => {
+    try {
+      await contactFormMutation.mutateAsync(data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <>
       <StyledContainer>
         <h1>Contact Us!</h1>
-        <StyledForm onSubmit={handleSubmit(() => null)}>
-          <input type="hidden" name="access_key" value={apiKey} />
+        <StyledForm onSubmit={handleSubmit(onSubmit)}>
+          <input type="hidden" name="access_key" value={formApiKey} />
           <Controller
             control={control}
             name="fullName"
