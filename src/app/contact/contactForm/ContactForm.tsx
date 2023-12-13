@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import { Controller, useForm } from "react-hook-form";
 import styled from "styled-components";
 import Input from "../../components/Input";
-import { StyledContainer, StyledForm } from "../../create/page";
+import { StyledForm } from "../../create/page";
 import {
   ContactFormSchema,
   contactFormSchema,
@@ -22,7 +22,7 @@ const ContactForm: FC<IProps> = ({ contactFormHook }) => {
     control,
     handleSubmit,
     setValue,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<ContactFormSchema>({
     mode: "onSubmit",
     resolver: zodResolver(contactFormSchema),
@@ -107,7 +107,9 @@ const ContactForm: FC<IProps> = ({ contactFormHook }) => {
         />
       </StyledCaptchaContainer>
 
-      <button type="submit">Submit</button>
+      <StyledButton type="submit" disabled={!isValid}>
+        Submit
+      </StyledButton>
     </StyledForm>
   );
 };
@@ -118,4 +120,23 @@ const StyledCaptchaContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+`;
+
+const StyledButton = styled.button<{ disabled: boolean }>`
+  outline: none;
+  background-color: #316e83;
+  color: white;
+  &:disabled {
+    opacity: 0.5;
+    color: white;
+  }
+  &:hover {
+    background-color: ${({ disabled }) => !disabled && "#646cff"};
+  }
+
+  &:active {
+    transform: ${({ disabled }) => !disabled && "scale(0.95)"};
+    box-shadow: ${({ disabled }) =>
+      !disabled && "inset 0px 0px 5px rgba(0, 0, 0, 0.3)"};
+  }
 `;
