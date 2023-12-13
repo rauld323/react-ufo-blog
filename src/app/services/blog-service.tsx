@@ -12,7 +12,7 @@ export interface Blog {
 
 const API_BASE_URL = "http://localhost:8000";
 
-export const formApiKey = process.env.CONTACT_FORM_API_KEY;
+const apiKey = process.env.API_KEY;
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -37,11 +37,11 @@ export const fetchBlogDetails = async (blogId: string): Promise<Blog> => {
 };
 
 export const postContactForm = async (formData: ContactFormValue) => {
-  const formDatas = { ...formData, access_key: formApiKey };
+  const contactFormData = { ...formData, access_key: apiKey };
   try {
     const response = await axios.post(
       "https://api.web3forms.com/submit",
-      formDatas
+      contactFormData
     );
     console.log("Submission response:", response);
     return response.data;

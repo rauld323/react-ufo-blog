@@ -12,9 +12,10 @@ import Input from "../components/Input";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import styled from "styled-components";
 import { useContactForm } from "../hooks/blog-hook";
-import { formApiKey } from "../services/blog-service";
 
 const Contact = () => {
+  const apiKey = process.env.API_KEY;
+
   const {
     control,
     handleSubmit,
@@ -44,7 +45,7 @@ const Contact = () => {
       <StyledContainer>
         <h1>Contact Us!</h1>
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
-          <input type="hidden" name="access_key" value={formApiKey} />
+          <input type="hidden" name="access_key" value={apiKey} />
           <Controller
             control={control}
             name="fullName"
