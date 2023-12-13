@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ContactFormValue } from "../contact/formSchema/contactFormSchema";
+import { ContactFormValue } from "../contact/contactForm/contactFormSchema";
 
 export interface Blog {
   id: string;

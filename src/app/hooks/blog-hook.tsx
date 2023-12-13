@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "react-query";
-import { ContactFormValue } from "../contact/formSchema/contactFormSchema";
+import { ContactFormValue } from "../contact/contactForm/contactFormSchema";
 import {
   Blog,
   fetchBlogDetails,
