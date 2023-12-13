@@ -5,9 +5,8 @@ import { useBlogs } from "../hooks/blog-hook";
 
 const Blogs = () => {
   const { data } = useBlogs();
-  console.log(data);
   return (
-    <div>
+    <StyledContainer>
       {data?.map((blog, key) => (
         <StyledBlogList key={key}>
           <h2>{blog.title}</h2>
@@ -19,11 +18,17 @@ const Blogs = () => {
           </div>
         </StyledBlogList>
       ))}
-    </div>
+    </StyledContainer>
   );
 };
 
 export default Blogs;
+
+const StyledContainer = styled.div`
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+`;
 
 const StyledBlogList = styled.div`
   padding: 10px 16px;

@@ -14,14 +14,15 @@ export default function BlogDetails() {
     <div>
       {isFetching && <div>Loading...</div>}
       {blogDetails && (
-        <>
-          <h2>{blogDetails.title}</h2>
-          <div className="blog-preview">
-            <h2>{blogDetails.name}</h2>
-            <article>{blogDetails.body}</article>
-            <p>Written by {blogDetails.author} </p>
-          </div>
-        </>
+        <article>
+          <img
+            src={"http://localhost:8000/" + blogDetails.blogImage}
+            alt="blogImage"
+          />
+          <h2>{blogDetails.name}</h2>
+          <p>Written by {blogDetails.author}</p>
+          <div>{blogDetails.content}</div>
+        </article>
       )}
       {isError && <>Crap, we are having issues</>}
     </div>

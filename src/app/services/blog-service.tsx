@@ -4,10 +4,11 @@ import { ContactFormValue } from "../contact/contactForm/contactFormSchema";
 export interface Blog {
   id: string;
   title: string;
-  body: string;
+  content: string;
   author: string;
   name: string;
   blogId: string;
+  blogImage: string;
 }
 
 const API_BASE_URL = "http://localhost:8000";
