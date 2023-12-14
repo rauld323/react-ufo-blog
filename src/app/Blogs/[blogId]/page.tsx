@@ -40,6 +40,9 @@ export default function BlogDetails() {
             <StyledName>{blogDetails.name}</StyledName>
             <p>Written by {blogDetails.author}</p>
             <StyledContent>{blogDetails.content}</StyledContent>
+            <StyledButtonSection>
+              <button>Purchase</button>
+            </StyledButtonSection>
           </StyledBlogText>
         </StyledBlogArticle>
       )}
@@ -65,4 +68,9 @@ const StyledContent = styled.div`
 
 const StyledBlogText = styled.div`
   margin: 0 20px;
+`;
+
+const StyledButtonSection = styled.div`
+  display: flex;
+  justify-content: center;
 `;
