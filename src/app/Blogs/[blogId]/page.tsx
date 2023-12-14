@@ -2,6 +2,7 @@
 import { useParams } from "next/navigation";
 import styled from "styled-components";
 import { useBlogDetails } from "../../hooks/blog-hook";
+import ReactImageMagnify from "react-image-magnify";
 
 export default function BlogDetails() {
   const { blogId } = useParams();
@@ -15,27 +16,41 @@ export default function BlogDetails() {
     <div>
       {isFetching && <div>Loading...</div>}
       {blogDetails && (
-        <article>
-          <StyledImage
-            src={"http://localhost:8000/" + blogDetails.blogImage}
-            alt="blogImage"
-          />
+        <StyledBlogArticle>
+          <div>
+            <ReactImageMagnify
+              {...{
+                smallImage: {
+                  alt: "Wristwatch by Ted Baker London",
+                  isFluidWidth: false,
+                  width: 400,
+                  height: 500,
+                  src: "http://localhost:8000/" + blogDetails.blogImage,
+                },
+                largeImage: {
+                  src: "http://localhost:8000/" + blogDetails.blogImage,
+                  width: 900,
+                  height: 1200,
+                  isHintEnabled: true,
+                },
+              }}
+            />
+          </div>
           <StyledBlogText>
             <StyledName>{blogDetails.name}</StyledName>
             <p>Written by {blogDetails.author}</p>
             <StyledContent>{blogDetails.content}</StyledContent>
           </StyledBlogText>
-        </article>
+        </StyledBlogArticle>
       )}
       {isError && <>Crap, we are having issues</>}
     </div>
   );
 }
 
-const StyledImage = styled.img`
-  margin-left: 15%;
-  margin-bottom: 10px;
-  width: 70%;
+const StyledBlogArticle = styled.article`
+  display: flex;
+  padding: 20px 20px;
 `;
 
 const StyledName = styled.h2`
