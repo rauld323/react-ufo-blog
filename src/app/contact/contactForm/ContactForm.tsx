@@ -126,6 +126,7 @@ const StyledButton = styled.button<{ disabled: boolean }>`
   outline: none;
   background-color: #316e83;
   color: white;
+  cursor: ${({ disabled }) => disabled && "not-allowed"};
   &:disabled {
     opacity: 0.5;
     color: white;
@@ -133,7 +134,6 @@ const StyledButton = styled.button<{ disabled: boolean }>`
   &:hover {
     background-color: ${({ disabled }) => !disabled && "#646cff"};
   }
-
   &:active {
     transform: ${({ disabled }) => !disabled && "scale(0.95)"};
     box-shadow: ${({ disabled }) =>
