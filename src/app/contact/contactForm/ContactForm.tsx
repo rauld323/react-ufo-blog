@@ -122,7 +122,7 @@ const StyledCaptchaContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-const StyledButton = styled.button<{ disabled: boolean }>`
+export const StyledButton = styled.button<{ disabled: boolean }>`
   outline: none;
   background-color: #316e83;
   color: white;
@@ -135,6 +135,7 @@ const StyledButton = styled.button<{ disabled: boolean }>`
     background-color: ${({ disabled }) => !disabled && "#646cff"};
   }
   &:active {
+    outline: none;
     transform: ${({ disabled }) => !disabled && "scale(0.95)"};
     box-shadow: ${({ disabled }) =>
       !disabled && "inset 0px 0px 5px rgba(0, 0, 0, 0.3)"};

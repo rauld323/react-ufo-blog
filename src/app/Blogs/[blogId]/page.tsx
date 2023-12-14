@@ -3,6 +3,7 @@ import { useParams } from "next/navigation";
 import styled from "styled-components";
 import { useBlogDetails } from "../../hooks/blog-hook";
 import ReactImageMagnify from "react-image-magnify";
+import { StyledButton } from "../../contact/contactForm/ContactForm";
 
 export default function BlogDetails() {
   const { blogId } = useParams();
@@ -41,7 +42,7 @@ export default function BlogDetails() {
             <p>Written by {blogDetails.author}</p>
             <StyledContent>{blogDetails.content}</StyledContent>
             <StyledButtonSection>
-              <button>Purchase</button>
+              <StyledButton disabled={false}>Purchase</StyledButton>
             </StyledButtonSection>
           </StyledBlogText>
         </StyledBlogArticle>
