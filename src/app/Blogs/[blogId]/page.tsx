@@ -18,7 +18,7 @@ export default function BlogDetails() {
       {isFetching && <div>Loading...</div>}
       {blogDetails && (
         <StyledBlogArticle>
-          <div>
+          {/* <div>
             <ReactImageMagnify
               {...{
                 smallImage: {
@@ -36,7 +36,7 @@ export default function BlogDetails() {
                 },
               }}
             />
-          </div>
+          </div> */}
           <StyledBlogText>
             <StyledName>{blogDetails.name}</StyledName>
             <p>Written by {blogDetails.author}</p>
