@@ -4,7 +4,6 @@ import React, { FC } from "react";
 import { Controller, useForm } from "react-hook-form";
 import styled from "styled-components";
 import Input from "../../components/Input";
-import { StyledForm } from "../../create/page";
 import {
   ContactFormSchema,
   contactFormSchema,
@@ -120,6 +119,15 @@ const StyledCaptchaContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  min-width: 70%;
+  border: solid black 1px;
+  border-radius: 10px;
+  padding: 20px;
 `;
 
 export const StyledButton = styled.button<{ disabled: boolean }>`
