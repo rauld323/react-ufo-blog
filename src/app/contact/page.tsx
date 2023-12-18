@@ -1,5 +1,5 @@
 "use client";
-import { StyledContainer } from "../create/page";
+import styled from "styled-components";
 import { useContactForm } from "../hooks/blog-hook";
 import ContactForm from "./contactForm/ContactForm";
 
@@ -23,3 +23,9 @@ const Contact = () => {
 };
 
 export default Contact;
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
