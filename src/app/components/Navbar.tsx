@@ -13,7 +13,7 @@ const Navbar: FC = () => {
       <div className="links">
         <Link href="/">Home</Link>
         <Link href="/blogs">Blogs</Link>
-        <Link href="/create">New Blog</Link>
+        {/* <Link href="/create">New Blog</Link> */}
         <Link href="/about">About</Link>
         <Link href="/contact">Contact</Link>
       </div>
